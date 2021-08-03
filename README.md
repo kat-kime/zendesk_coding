@@ -23,7 +23,7 @@ If you would like to demo this application, follow the instructions below:
 ## System Requirements
 To successfully run this application, you will need the following resources:
 
-- **A Copy of this Application.** To copy this application to your machine, use the command line to 'cd' to your desired location and enter the following: `git clone https://github.com/kat-kime/zendesk_coding.git`
+- **A Copy of this Application.** To copy this application to your machine, use the command line to `cd` to your desired location and enter the following: `git clone https://github.com/kat-kime/zendesk_coding.git`
 
 - **Python:** To download the latest version of Python, [visit Python.org](https://www.python.org/downloads/).
 - **Authorization Code:** This application uses an OAuth token to confirm authorization. To get yours, [follow Zendesk's instructions here](https://support.zendesk.com/hc/en-us/articles/203663836).
@@ -31,7 +31,7 @@ To successfully run this application, you will need the following resources:
   - AUTHORIZATION_KEY = "{insert OAuth token}"
   - DOMAIN = "{your Zendesk domain}"
   - REDIRECT_URI = "{Redirect URI}"
-- **PrettyTable:** To download [the PrettyTable module](https://pypi.org/project/prettytable/) that displays content in tables, use the following command: pip3 install prettytable
+- **PrettyTable:** To download [the PrettyTable module](https://pypi.org/project/prettytable/) that displays content in tables, use the following command: `pip3 install prettytable`
 - [Optional] **Sample Tickets:** To generate your own, use the included tickets.json file and the following curl command:
 `curl https://{subdomain}.zendesk.com/api/v2/imports/tickets/create_many.json -v -u
 {email_address}:{password} -X POST -d @tickets.json -H "Content-Type:
