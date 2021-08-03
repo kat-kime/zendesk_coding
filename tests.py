@@ -5,6 +5,7 @@
 import unittest
 import ticket_viewer
 import ticket_database
+import Constants
 
 """
 Specifications:
@@ -26,22 +27,29 @@ class TestCase(unittest.TestCase):
         """
         Tests that get_tickets connects to the Zendesk API.
         """
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
         expected = dict
 
-        self.assertEqual(expected, type(ticket_viewer.get_tickets()))
+        self.assertEqual(expected, type(ticket_viewer.get_tickets(authorization, domain)))
 
     def test_2_list(self):
         """
         Tests that display_table prints a table of Zendesk tickets.
         """
-        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets(authorization, domain))
         tickets.display_tickets()
 
     def test_3_details(self):
         """
         Tests that the ticket viewer creates and returns a string object with user details when prompted.
         """
-        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
+
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets(authorization, domain))
         ticket_id = 1
         expected = str
 
@@ -54,8 +62,11 @@ class TestCase(unittest.TestCase):
         Tests that the ticket viewer displays the next page of tickets when prompted.
 
         """
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
+
         # test that final displayed ticket is greater than original ticket
-        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets(authorization, domain))
         start = tickets.display_tickets()
         end = tickets.view_next_page(start)
 
@@ -71,7 +82,10 @@ class TestCase(unittest.TestCase):
         ticket_id = 5
         expected = -1
 
-        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
+
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets(authorization, domain))
 
         self.assertEqual(expected, tickets.execute_command(command, ticket_id))
 
@@ -80,22 +94,62 @@ class TestCase(unittest.TestCase):
         Tests that execute_command() returns a number greater than -1 when view details is selected
 
         """
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
+
         command = 'next'
         ticket_id = 5
         expected = True
 
-        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets(authorization, domain))
 
         self.assertEqual(expected, tickets.execute_command(command, ticket_id) > ticket_id)
 
     def test_5_bad_API(self):
         """
         Tests that the ticket viewer displays an error and exits when the API cannot be reached.
-        NOTE: Constraints.AUTHORIZATION_KEY must be changed to an invalid code.
 
         """
-        tickets = ticket_viewer.get_tickets()
+        authorization = "bad key"
+        domain = Constants.DOMAIN
+        tickets = ticket_viewer.get_tickets(authorization, domain)
         expected = None
 
         self.assertEqual(expected, tickets)
+
+    def test_9_good_data(self):
+        """
+        Tests that program runs successfully when good data is given.
+
+        """
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
+
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets(authorization, domain))
+
+    def test_10_bad_ticket_number(self):
+        """
+        Tests that program responds accordingly when user feeds a number that's larger than database
+
+        """
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
+        n = 1000
+
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets(authorization, domain))
+        tickets.get_ticket_details(n)
+
+    def test_11_bad_data_input(self):
+        """
+        Tests that exception is caught when user enters invalid ticket id.
+        """
+        authorization = Constants.AUTHORIZATION_KEY
+        domain = Constants.DOMAIN
+        command = 'view'
+        tid = 5
+        n = 'stuff'
+
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets(authorization, domain))
+        tickets.execute_command(command, tid)
+
 

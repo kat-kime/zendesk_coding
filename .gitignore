@@ -1,3 +1,5 @@
 Constants.py
 .pytest_cache
-__pycache__/Constants.cpython-39.pyc
+__pycache__/
+__pycache__/ticket.cpython-39.pyc
+__pycache__/ticket_database.cpython-39.pyc

@@ -103,6 +103,9 @@ class Tickets:
             ticket_id: User-defined ticket ID.
         Returns: String representing ticket details.
         """
+        if ticket_id >= len(self._tickets):
+            return f"\n{ticket_id} is outside the range of current tickets.\n\n\nEnter R to return."
+
         ticket = self._tickets[ticket_id]
         subject = ticket.get_subject()
         created_date = ticket.get_created_date()
@@ -140,14 +143,18 @@ class Tickets:
         if command.lower() == 'v' or command.lower() == 'view':
             instructions = "\nEnter a Ticket ID: \n"
 
-            # todo: add exception handler here
-            ticket_id = int(input(instructions))
+            try:
+                ticket_id = int(input(instructions))
 
-            print(self.get_ticket_details(ticket_id))
+                print(self.get_ticket_details(ticket_id))
 
-            user_input = input()
+                user_input = input()
 
-            self.display_tickets()
+                self.display_tickets()
+
+            except ValueError:
+                print("Invalid input. Must enter an integer.")
+
             return -1
 
         elif command.lower() == 'n' or command.lower() == 'next':
