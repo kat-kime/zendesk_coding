@@ -4,6 +4,7 @@
 
 import unittest
 import ticket_viewer
+import ticket_database
 
 """
 Specifications:
@@ -32,5 +33,17 @@ class TestCase(unittest.TestCase):
         """
         Tests that display_table prints a table of Zendesk tickets.
         """
-        tickets = ticket_viewer.Tickets(ticket_viewer.get_tickets())
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
         tickets.display_tickets()
+
+    def test_3_details(self):
+        """
+        Tests that the ticket viewer creates and returns a string object with user details when prompted.
+        """
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+        ticket_id = 1
+        expected = str
+
+        print(tickets.get_ticket_details(ticket_id))
+
+        self.assertEqual(expected, type(tickets.get_ticket_details(ticket_id)))
