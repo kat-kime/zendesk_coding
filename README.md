@@ -4,10 +4,10 @@
 <img src="https://github.com/kat-kime/zendesk_coding/blob/main/ticket_viewer_walk_3.gif" width = "600">
 
 ## Table of Contents
-1. [Overview](#Overview)
-2. [System Requirements](#Requirements)
-3. [Running the Program](#Running-Program)
-4. [User Specifications](#User-Specifications)
+1. [Overview](##Overview)
+2. [System Requirements](##Requirements)
+3. [Running the Program](##Running Program)
+4. [User Specifications](##User Specifications)
 
 ## Overview
 The Zendesk Ticket Viewer is a command-line appliction that was developed as a submission to the 2021 Zendesk Coding Challenge. It allows users to:
