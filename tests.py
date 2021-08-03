@@ -21,6 +21,7 @@ invalid.
 
 
 class TestCase(unittest.TestCase):
+
     def test_1_API(self):
         """
         Tests that get_tickets connects to the Zendesk API.
@@ -47,3 +48,16 @@ class TestCase(unittest.TestCase):
         print(tickets.get_ticket_details(ticket_id))
 
         self.assertEqual(expected, type(tickets.get_ticket_details(ticket_id)))
+
+    def test_4_next(self):
+        """
+        Tests that the ticket viewer displays the next page of tickets when prompted.
+
+        """
+        # test that final displayed ticket is greater than original ticket
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+        start = tickets.display_tickets()
+        end = tickets.view_next_page(start)
+
+        expected = True
+        self.assertEqual(expected, end - start > 0)

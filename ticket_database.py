@@ -87,6 +87,9 @@ class Tickets:
             table.add_row([ticket_id, status, created_date, subject, ticket_type, priority])
             start_id += 1
 
+            if start_id >= len(self._tickets):
+                start_id = 1
+
         print(table)
         if len(self._tickets) > 25:
             print(f"\nTickets {start} - {start_id - 1} are displayed.\nTo see more tickets, use the N command.")
@@ -111,16 +114,29 @@ class Tickets:
         return f"\n\n\n\nSubject: {subject}\nCreated Date: {created_date}\nRequester: {requester}\n" \
                f"Assignee: {assignee}\nURL: {url}\n\nDescription:\n\n{description}\n\n\n\nEnter R to return."
 
-    def view_next_page(self):
-        pass
+    def view_next_page(self, start_id) -> int:
+        """
+        Displays the next page of the ticket results.
 
-    def execute_command(self, command: str) -> None:
+        Args:
+            start_id: First ticket to display
+
+        Returns: ID of the last ticket.
+
+        """
+        return self.display_tickets(start_id)
+
+    def execute_command(self, command: str, last_ticket_id: int) -> int:
         """
         Receives user's input command and executes it.
         Args:
             command: User-defined command.
-        Returns: None
+            last_ticket_id: ID of the last ticket displayed.
+
+        Returns: Last ticket id if new page was selected, -1 if otherwise
         """
+        last_ticket = last_ticket_id
+
         if command.lower() == 'v' or command.lower() == 'view':
             instructions = "\nEnter a Ticket ID: \n"
 
@@ -132,9 +148,8 @@ class Tickets:
             user_input = input()
 
             self.display_tickets()
+            return -1
 
         elif command.lower() == 'n' or command.lower() == 'next':
-            self.view_next_page()
-
-        else:
-            print("\nCommand not recognized.\n")
+            last_ticket = self.view_next_page(last_ticket)
+            return last_ticket

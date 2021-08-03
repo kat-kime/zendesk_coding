@@ -3,7 +3,6 @@
 # Description:              Allows users to access tickets for a given account number.
 import requests
 import Constants
-from collections import defaultdict
 import ticket_database
 
 _AUTHORIZATION = Constants.AUTHORIZATION_KEY
@@ -27,7 +26,7 @@ def get_tickets() -> dict:
 
 def main():
     tickets = ticket_database.Tickets(get_tickets())
-    tickets.display_tickets()
+    last_ticket = tickets.display_tickets()
 
     user_instructions = f"\nSelect an option:\n[V] View Ticket Details   ---   " \
                         f"[N] Next Page   ---   [Q] Quit\n"
@@ -39,8 +38,15 @@ def main():
             print("\nExiting the Ticket Viewer program...")
             break
 
+        elif user_input.lower() == 'v' or user_input.lower() == 'view' or user_input.lower() == 'n' or \
+                user_input.lower() == 'next':
+            num = tickets.execute_command(user_input, last_ticket)
+
+            if num >= 0:
+                last_ticket = num
+
         else:
-            tickets.execute_command(user_input)
+            print("\nCommand not recognized.\n")
 
 
 if __name__ == "__main__":
