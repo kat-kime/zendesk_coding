@@ -63,20 +63,20 @@ The following are screenshots to help you get a feel of how the program works:
 ### Welcome Screen
 As the program starts, it calls the Zendesk API to request all tickets, then displays the tickets in a table. Users can navigate the application by using the input-based menu.
 
-<img width="776" alt="welcome_screen" src="https://user-images.githubusercontent.com/44751576/127990953-4a7bf48a-ae31-483d-9cde-98e65a65c701.png">
+<img width="740" alt="welcome_screen" src="https://user-images.githubusercontent.com/44751576/127990953-4a7bf48a-ae31-483d-9cde-98e65a65c701.png">
 
 
 ### Individual Tickets
 On command, the application presents curated ticket details to the user, with a URL to help users get an even closer look at a ticket's information.
 
-<img width="813" alt="individual_ticket" src="https://user-images.githubusercontent.com/44751576/127991002-bc12f93c-cc22-422d-9c8f-4c28f11b8aca.png">
+<img width="740" alt="individual_ticket" src="https://user-images.githubusercontent.com/44751576/127991002-bc12f93c-cc22-422d-9c8f-4c28f11b8aca.png">
 
 ### User Error
 Upon receiving invalid inputs, the ticket viewer will handle exceptions and instruct the user on how to provide valid inputs.
 
-<img width="775" alt="error_handling_1" src="https://user-images.githubusercontent.com/44751576/127991022-86c113bf-182c-4ca2-980d-deb0b28e0864.png">
+<img width="740" alt="error_handling_1" src="https://user-images.githubusercontent.com/44751576/127991022-86c113bf-182c-4ca2-980d-deb0b28e0864.png">
 
-<img width="749" alt="error_handling_2" src="https://user-images.githubusercontent.com/44751576/127991042-bb7a546f-6d4b-4546-8204-14606f8c0827.png">
+<img width="740" alt="error_handling_2" src="https://user-images.githubusercontent.com/44751576/127991042-bb7a546f-6d4b-4546-8204-14606f8c0827.png">
 
 
 
