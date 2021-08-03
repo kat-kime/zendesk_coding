@@ -61,3 +61,14 @@ class TestCase(unittest.TestCase):
 
         expected = True
         self.assertEqual(expected, end - start > 0)
+
+    def test_5_bad_API(self):
+        """
+        Tests that the ticket viewer displays an error and exits when the API cannot be reached.
+        NOTE: Constraints.AUTHORIZATION_KEY must be changed to an invalid code.
+
+        """
+        tickets = ticket_viewer.get_tickets()
+        expected = None
+
+        self.assertEqual(expected, tickets)

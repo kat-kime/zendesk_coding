@@ -15,7 +15,7 @@ def get_tickets() -> dict:
     r = requests.get(tickets_url, headers=headers)
 
     if r.status_code != requests.codes.ok:
-        data = r.status_code
+        data = None
         print("Error:", r.status_code)
 
     else:
@@ -24,8 +24,8 @@ def get_tickets() -> dict:
     return data
 
 
-def main():
-    tickets = ticket_database.Tickets(get_tickets())
+def launch_ticket_viewer(data):
+    tickets = ticket_database.Tickets(data)
     last_ticket = tickets.display_tickets()
 
     user_instructions = f"\nSelect an option:\n[V] View Ticket Details   ---   " \
@@ -47,6 +47,16 @@ def main():
 
         else:
             print("\nCommand not recognized.\n")
+
+
+def main():
+    data = get_tickets()
+
+    if data:
+        launch_ticket_viewer(data)
+
+    else:
+        print("Error: Could not retrieve tickets at this time. Please check with your system administrator.")
 
 
 if __name__ == "__main__":
