@@ -27,3 +27,10 @@ class TestCase(unittest.TestCase):
         expected = dict
 
         self.assertEqual(expected, type(ticket_viewer.get_tickets()))
+
+    def test_2_list(self):
+        """
+        Tests that display_table prints a table of Zendesk tickets.
+        """
+        tickets = ticket_viewer.Tickets(ticket_viewer.get_tickets())
+        tickets.display_tickets()
