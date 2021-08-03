@@ -62,6 +62,32 @@ class TestCase(unittest.TestCase):
         expected = True
         self.assertEqual(expected, end - start > 0)
 
+    def test_6_execute_details(self):
+        """
+        Tests that execute_command() returns -1 when view details is selected
+
+        """
+        command = 'view'
+        ticket_id = 5
+        expected = -1
+
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+
+        self.assertEqual(expected, tickets.execute_command(command, ticket_id))
+
+    def test_7_excute_next(self):
+        """
+        Tests that execute_command() returns a number greater than -1 when view details is selected
+
+        """
+        command = 'next'
+        ticket_id = 5
+        expected = True
+
+        tickets = ticket_database.Tickets(ticket_viewer.get_tickets())
+
+        self.assertEqual(expected, tickets.execute_command(command, ticket_id) > ticket_id)
+
     def test_5_bad_API(self):
         """
         Tests that the ticket viewer displays an error and exits when the API cannot be reached.
@@ -72,3 +98,4 @@ class TestCase(unittest.TestCase):
         expected = None
 
         self.assertEqual(expected, tickets)
+

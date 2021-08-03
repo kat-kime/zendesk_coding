@@ -68,7 +68,6 @@ class Ticket:
         self._description = description
 
     def set_due_date(self, due_date: str) -> None:
-        # TODO: create into a real date maybe?
         self._due_date = due_date
 
     def set_priority(self, priority: str) -> None:
