@@ -1,6 +1,8 @@
 # Zendesk Ticket Viewer
 ===
 
+<img src="https://github.com/kat-kime/zendesk_coding/blob/main/ticket_viewer_walk_3.gif" width = "600">
+
 ## Table of Contents
 1. [Overview](#Overview)
 2. [System Requirements](#Requirements)
