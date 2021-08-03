@@ -11,7 +11,7 @@
 5. [Ticket Viewer in Action](#Ticket-Viewer-in-Action)
 
 ## Overview
-The Zendesk Ticket Viewer is a command-line appliction that was developed as a submission to the 2021 Zendesk Coding Challenge. It allows users to:
+The Zendesk Ticket Viewer is a command-line application that was developed as a submission to the 2021 Zendesk Coding Challenge. It allows users to:
 
 - Request all company tickets
 - View individual ticket details
