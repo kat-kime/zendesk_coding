@@ -5,9 +5,9 @@
 
 ## Table of Contents
 1. [Overview](##Overview)
-2. [System Requirements](##Requirements)
-3. [Running the Program](##Running Program)
-4. [User Specifications](##User Specifications)
+2. [System Requirements](##System-Requirements)
+3. [Running the Program](##Running-the-Program)
+4. [User Specifications](##User-Specifications)
 
 ## Overview
 The Zendesk Ticket Viewer is a command-line appliction that was developed as a submission to the 2021 Zendesk Coding Challenge. It allows users to:
