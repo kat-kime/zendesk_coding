@@ -32,6 +32,7 @@ To successfully run this application, you will need the following resources:
   - DOMAIN = "{your Zendesk domain}"
   - REDIRECT_URI = "{Redirect URI}"
 - **PrettyTable:** To download [the PrettyTable module](https://pypi.org/project/prettytable/) that displays content in tables, use the following command: `pip3 install prettytable`
+- **Unit Testing Framework:** To run the `tests.py` program, you will need to import [the unittest module](https://docs.python.org/3/library/unittest.html).
 - [Optional] **Sample Tickets:** To generate your own, use the included tickets.json file and the following curl command:
 `curl https://{subdomain}.zendesk.com/api/v2/imports/tickets/create_many.json -v -u
 {email_address}:{password} -X POST -d @tickets.json -H "Content-Type:
